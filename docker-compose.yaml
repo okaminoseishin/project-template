@@ -1,0 +1,20 @@
+version: '3.7'
+
+x-logging: &logging
+  options:
+    max-size: "10m"
+    max-file: "3"
+  driver: "json-file"
+
+
+services:
+
+  application:
+    build:
+      context: application
+      dockerfile: dockerfile
+
+    image: image-name
+    container_name: container-name
+
+    logging: *logging

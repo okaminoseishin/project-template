@@ -1,0 +1,18 @@
+# syntax=docker/dockerfile:experimental
+
+FROM python:3.8.1
+
+
+# install application
+
+# NOTE: already downloaded dependencies that match requirements will not be
+# downloaded again and/or rebuilt and will be used from cache instead
+
+RUN --mount=type=cache,target=/root/.cache/pip --mount=type=bind,source=./,target=/source pip install --upgrade pip; pip install /source
+
+WORKDIR /runtime
+
+
+# set entrypoint
+
+CMD ["application", "--help"]

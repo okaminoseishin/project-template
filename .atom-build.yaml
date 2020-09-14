@@ -1,0 +1,13 @@
+# configuration for `atom-build` module for Atom editor
+
+name: application
+
+cmd: pip uninstall --yes application && pip install ./application
+
+targets:
+  "RUN application":
+    cmd: application
+  "BUILD application":
+    cmd: docker-compose build
+  "UP application":
+    cmd: docker-compose up
